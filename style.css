@@ -1,0 +1,89 @@
+@font-face 
+{
+	font-family: "rodin"; /* set name */
+	src: url("assets/FOT-Rodin\ Pro\ M.otf"); /* url of the font */
+}
+
+:root
+{
+	--orange: #ffb000;
+	--orange-dark: #FE8C00;
+	--cream: #FBE5B8;
+	--brown: #882E00;
+}
+
+*
+{
+	font-family: rodin;
+}
+
+body
+{
+	
+	background-color: var(--cream);
+	margin: 0;
+}
+
+/* Navbar */
+
+.icons
+{
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.category-btn
+{
+	background: var(--cream);
+	border-radius: 20px;
+	padding: 8px 11px;
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	letter-spacing: -0.03em;
+	border: none;
+	box-shadow: 0 2px 0 rgba(0,0,0,.08);
+	transition-duration: .2s;
+}
+  
+.category-btn:hover
+{
+	background: #ffd28a;
+	box-shadow: inset 0 -3px 0 rgba(0,0,0,.08);
+}
+  
+  .icon.disabled{
+	opacity: .45;
+  }
+  
+
+/* Products */
+
+.products
+{
+	display: grid;
+	grid-template-columns: repeat(4, 200px);
+	margin-left: 100px;
+	gap: 30px;
+}
+
+.product
+{
+	position: relative;
+	width: 100px;
+	text-align: center;
+}
+
+.product>img
+{
+	width: 100px;
+	height: 100px;
+	object-fit: contain;
+}
+
+.product>p
+{
+	background: white;
+	box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.5);
+}
