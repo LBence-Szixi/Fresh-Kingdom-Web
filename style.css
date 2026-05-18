@@ -45,6 +45,8 @@ body
 	border: none;
 	box-shadow: 0 2px 0 rgba(0,0,0,.08);
 	transition-duration: .2s;
+	min-width: 75px;
+	text-align: center;
 }
   
 .category-btn:hover

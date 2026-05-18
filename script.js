@@ -1,6 +1,5 @@
 let categories;
 let categoryBar = document.getElementById("categories");
-let currentCategory = "";
 
 let products;
 let productGrid = document.getElementById("products");
@@ -21,7 +20,7 @@ async function loadProducts()
 	.then(data => {
 		console.log(data);
 		products = data;
-		displayItems(currentCategory);
+		displayItems("");
 	});
 }
 
@@ -33,6 +32,10 @@ function boltSetup()
 		let capitalizedName = category.charAt(0).toUpperCase() + category.slice(1)
 		categoryBtn.textContent = capitalizedName;
 		categoryBtn.className = "category-btn";
+		categoryBtn.onclick = function()
+		{
+			displayItems(category);
+		}
 
 		categoryBar.appendChild(categoryBtn);
 	});
@@ -41,7 +44,26 @@ function boltSetup()
 
 function displayItems(selectedCategory)
 {
-	products.forEach(product => {
+
+	productGrid.textContent = "";
+	let selectedProducts = [];
+
+	if(selectedCategory === "")
+	{
+		selectedProducts = products;
+	}
+	else
+	{
+		products.forEach(product => {
+			if(product.category === selectedCategory)
+			{
+				console.log(product);
+				selectedProducts.push(product);
+			}
+		})
+	}
+
+	selectedProducts.forEach(product => {
 		let productItem = document.createElement("div");
 		productItem.className = "product";
 
@@ -64,6 +86,11 @@ function displayItems(selectedCategory)
 		}
 		productItem.onmouseout = function() {
 			this.querySelector('.popup').classList.remove("show");
+			this.querySelector('.popup').classList.add('hide');
+
+			this.querySelector('.popup').addEventListener('animationend', () => {
+				this.querySelector('.popup').classList.remove('show', 'hide');
+			}, { once: true });
 		}
 
 		productGrid.appendChild(productItem);
